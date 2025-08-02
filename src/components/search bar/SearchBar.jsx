@@ -33,12 +33,12 @@ export default function Searchbar() {
             {results.map((city, i) => (
               <li
                 key={i}
-                className="search-result-item p-2 hover:bg-(--color-primary-hover) transition-all duration-300 rounded-lg"
+                className="search-result-item flex justify-between p-2 hover:bg-(--color-primary-hover) transition-all duration-300 rounded-lg"
                 onClick={() => {
                   setCity(`${city.city}, ${city.country}`);
                 }}
               >
-                {city.city}, {city.country}, {city.timezone}
+                {city.city}, {city.country} <span className=" text-(--color-text-h-muted)">{city.timezone}</span>
               </li>
             ))}
           </ul>
