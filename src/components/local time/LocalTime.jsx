@@ -21,7 +21,7 @@ export default function LocalTime() {
     <div
       className={`fav-time-container flex flex-col items-center justify-center w-full md:w-1/2`}
     >
-      <h1 id="local-time" className="pt-4 text-2xl font-bold mb-4 text-center">
+      <h1 id="local-time" className="text-2xl font-bold mb-4 text-center">
         Your Local Time
       </h1>
       <div className="p-4 rounded-lg flex flex-row items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg">
