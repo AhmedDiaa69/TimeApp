@@ -2,22 +2,18 @@ import "./DiaplayTime.css";
 import { useState, useEffect } from "react";
 
 export default function DisplayTime({ cityData }) {
-  const [Time, setTime] = useState("");
+  const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   console.log(cityData);
-  const APIKey = "w+0ZWNiXLMg6rgIFDveRzg==i3UnLOpOMIQP7pDC";
+  const APIKey = "9ac18a62ee9b400aa10a235c2ea6e821";
 
   useEffect(() => {
     if (cityData && cityData.timezone) {
-      console.log(`Fetching time for timezone: ${cityData.timezone}`);
       fetch(
-        `https://api.api-ninjas.com/v1/worldtime?timezone=${cityData.timezone}`,
+        `https://api.ipgeolocation.io/v2/timezone?apiKey=${APIKey}&tz=${cityData.timezone}`,
         {
           method: "GET",
-          headers: {
-            "X-Api-Key": APIKey,
-            "Content-Type": "application/json",
-          },
+          redirect: "follow",
         }
       )
         .then((response) => {
@@ -27,8 +23,16 @@ export default function DisplayTime({ cityData }) {
           return response.json();
         })
         .then((data) => {
-          setTime(new Date(data.datetime).toLocaleTimeString());
-          setDate(new Date(data.datetime).toLocaleDateString());
+          console.log("worldtime data:", data);
+          setTime(data.time_zone.time_12);
+          setDate(
+            new Date(data.time_zone.date_time).toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          );
         })
         .catch((error) => {
           console.error("Error fetching time data:", error);
@@ -47,7 +51,7 @@ export default function DisplayTime({ cityData }) {
           </h1>
           <div className="p-4 rounded-lg flex flex-row items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg">
             <div className="text-2xl font-mono text-(--color-primary)">
-              {Time}
+              {time}
             </div>
             <div className="text-sm text-(--color-text-muted) mt-1">
               {date},{" "}
