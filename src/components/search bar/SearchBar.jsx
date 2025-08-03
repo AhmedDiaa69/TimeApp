@@ -1,10 +1,22 @@
 import "./Searchbar.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import cityTimezones from "city-timezones";
+import DisplayTime from "../display time/DisplayTime.jsx";
 
 export default function Searchbar() {
   const [city, setCity] = useState("");
   const results = cityTimezones.findFromCityStateProvince(city);
+  let [selectedCity, setSelectedCity] = useState("");
+
+  function sendTimeZone() {
+    if (results.length > 0) {
+      setSelectedCity(results[0]);
+      console.log(`search, Selected timezone: ${results[0].timezone}`);
+    } else {
+      console.log("search, No results found for the given city.");
+      return;
+    }
+  }
 
   console.log(results);
   return (
@@ -24,7 +36,10 @@ export default function Searchbar() {
             className="search-input w-full md:w-1/2 bg-(--color-surface) border border-(--color-border) focus:outline-none focus:ring-2 focus:ring-(--color-primary) transition-all duration-300 rounded-lg p-2 shadow-sm"
             onChange={(e) => setCity(e.target.value)}
           />
-          <button className="search-button text-(--color-text) bg-(--color-primary) hover:bg-(--color-primary-hover) active:bg-(--color-primary-active) transition-all duration-300 font-bold py-2 px-4 rounded-lg ml-2 shadow-sm">
+          <button
+            className="search-button text-(--color-text) bg-(--color-primary) hover:bg-(--color-primary-hover) active:bg-(--color-primary-active) transition-all duration-300 font-bold py-2 px-4 rounded-lg ml-2 shadow-sm"
+            onClick={sendTimeZone}
+          >
             Search
           </button>
         </div>
@@ -36,14 +51,19 @@ export default function Searchbar() {
                 className="search-result-item flex justify-between p-2 hover:bg-(--color-primary-hover) transition-all duration-300 rounded-lg"
                 onClick={() => {
                   setCity(`${city.city}, ${city.country}`);
+                  setSelectedCity(city);
                 }}
               >
-                {city.city}, {city.country} <span className=" text-(--color-text-h-muted)">{city.timezone}</span>
+                {city.city}, {city.country}{" "}
+                <span className=" text-(--color-text-h-muted)">
+                  {city.timezone}
+                </span>
               </li>
             ))}
           </ul>
         )}
       </div>
+      {selectedCity && <DisplayTime cityData={selectedCity} />}
     </>
   );
 }
