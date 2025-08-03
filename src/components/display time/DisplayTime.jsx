@@ -1,5 +1,5 @@
-import "./DiaplayTime.css";
 import { useState, useEffect } from "react";
+import Card from "../card/Card";
 
 export default function DisplayTime({ cityData }) {
   const [time, setTime] = useState("");
@@ -45,20 +45,13 @@ export default function DisplayTime({ cityData }) {
   return (
     <>
       {cityData && (
-        <>
-          <h1 className="text-center text-2xl font-bold mb-4">
-            Current time in {cityData.city}, {cityData.country}
-          </h1>
-          <div className="p-4 rounded-lg flex flex-row items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg">
-            <div className="text-2xl font-mono text-(--color-primary)">
-              {time}
-            </div>
-            <div className="text-sm text-(--color-text-muted) mt-1">
-              {date},{" "}
-              {cityData.timezone ? cityData.timezone : "Unknown timezone"}
-            </div>
-          </div>
-        </>
+        <Card
+          title={`Current time in ${cityData.city}, ${cityData.country}`}
+          time={time}
+          date={date}
+          timeZone={cityData.timezone || "Unknown timezone"}
+          className="display-time-card block w-full md:w-1/2 mx-auto p-4"
+        />
       )}
     </>
   );
