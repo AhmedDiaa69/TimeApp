@@ -5,6 +5,7 @@ import LocalTime from "./components/local time/LocalTime";
 import FavTime from "./components/fav Time/FavTime";
 import SearchBar from "./components/search bar/SearchBar";
 import TimeDisplay from "./components/display time/DisplayTime";
+import { Analytics } from "@vercel/analytics/next";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -35,6 +36,7 @@ function App() {
       </div>
       <SearchBar />
       <TimeDisplay />
+      <Analytics />
     </>
   );
 }
