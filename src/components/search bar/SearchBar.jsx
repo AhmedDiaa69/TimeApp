@@ -1,4 +1,3 @@
-import "./Searchbar.css";
 import { useState } from "react";
 import cityTimezones from "city-timezones";
 import DisplayTime from "../display time/DisplayTime.jsx";
