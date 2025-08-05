@@ -21,7 +21,7 @@ export default function Searchbar() {
   return (
     <>
       <h1 className="text-center text-2xl font-bold mb-4">Search for a City</h1>
-      <p className="text-center text-gray-600 mb-6">
+      <p className="text-center text-gray-600 mb-6 pl-2 pr-2">
         Find the local time for any city around the world.
       </p>
       <div className="relative">
