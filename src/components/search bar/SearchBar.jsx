@@ -1,8 +1,13 @@
 import { useState } from "react";
 import cityTimezones from "city-timezones";
 import DisplayTime from "../display time/DisplayTime.jsx";
+import Button from "../button/Button.jsx";
 
-export default function Searchbar() {
+export default function SearchBar({
+  setCityTime,
+  setCityDate,
+  setCityTimeZone,
+}) {
   const [city, setCity] = useState("");
   const results = cityTimezones.findFromCityStateProvince(city);
   let [selectedCity, setSelectedCity] = useState("");
@@ -35,12 +40,15 @@ export default function Searchbar() {
             className="search-input w-full md:w-1/2 bg-(--color-surface) border border-(--color-border) focus:outline-none focus:ring-2 focus:ring-(--color-primary) transition-all duration-300 rounded-lg p-2 shadow-sm"
             onChange={(e) => setCity(e.target.value)}
           />
-          <button
-            className="search-button text-(--color-text) bg-(--color-primary) hover:bg-(--color-primary-hover) active:bg-(--color-primary-active) transition-all duration-300 font-bold py-2 px-4 rounded-lg ml-2 shadow-sm"
-            onClick={sendTimeZone}
+          <Button
+            onClick={() => {
+              sendTimeZone();
+              setCity("");
+            }}
+            className="search-button"
           >
             Search
-          </button>
+          </Button>
         </div>
         {results.length > 0 && (
           <ul className="search-results list-none p-4 absolute w-full md:w-1/2 left-1/2 transform -translate-x-1/2 h-full overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
@@ -62,7 +70,14 @@ export default function Searchbar() {
           </ul>
         )}
       </div>
-      {selectedCity && <DisplayTime cityData={selectedCity} />}
+      {selectedCity && (
+        <DisplayTime
+          cityData={selectedCity}
+          setFavCityTime={setCityTime}
+          setFavCityDate={setCityDate}
+          setFavCityTimeZone={setCityTimeZone}
+        />
+      )}
     </>
   );
 }

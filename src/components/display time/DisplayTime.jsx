@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import Card from "../card/Card";
+import Button from "../button/Button";
 
-export default function DisplayTime({ cityData }) {
+export default function DisplayTime({
+  cityData,
+  setFavCityTime,
+  setFavCityDate,
+  setFavCityTimeZone,
+}) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   console.log(cityData);
@@ -45,13 +51,25 @@ export default function DisplayTime({ cityData }) {
   return (
     <>
       {cityData && (
-        <Card
-          title={`Current time in ${cityData.city}, ${cityData.country}`}
-          time={time}
-          date={date}
-          timeZone={cityData.timezone || "Unknown timezone"}
-          className="display-time-card block w-full md:w-1/2 mx-auto p-4"
-        />
+        <section className="display-time-section flex flex-col items-center">
+          <Card
+            title={`Current time in ${cityData.city}, ${cityData.country}`}
+            time={time}
+            date={date}
+            timeZone={cityData.timezone || "Unknown timezone"}
+            className="display-time-card block w-full md:w-1/2 mx-auto p-4"
+          />
+          <Button
+            className="mt-4"
+            onClick={() => {
+              setFavCityTime(time);
+              setFavCityDate(date);
+              setFavCityTimeZone(cityData.timezone);
+            }}
+          >
+            Add to Favorites
+          </Button>
+        </section>
       )}
     </>
   );

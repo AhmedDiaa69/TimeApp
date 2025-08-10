@@ -4,12 +4,11 @@ import Navbar from "./components/navbar/Navbar";
 import LocalTime from "./components/local time/LocalTime";
 import FavTime from "./components/fav Time/FavTime";
 import SearchBar from "./components/search bar/SearchBar";
-import TimeDisplay from "./components/display time/DisplayTime";
 import { Analytics } from "@vercel/analytics/react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   useEffect(() => {
@@ -27,15 +26,26 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  const [favCityTime, setFavCityTime] = useState();
+  const [favCityDate, setFavCityDate] = useState();
+  const [favCityTimeZone, setFavCityTimeZone] = useState();
+
   return (
     <>
       <Navbar />
       <div className="hero flex flex-col md:flex-row w-full gap-8 p-4">
         <LocalTime />
-        <FavTime />
+        <FavTime
+          cityTime={favCityTime}
+          cityDate={favCityDate}
+          cityTimeZone={favCityTimeZone}
+        />
       </div>
-      <SearchBar />
-      <TimeDisplay />
+      <SearchBar
+        setCityTime={setFavCityTime}
+        setCityDate={setFavCityDate}
+        setCityTimeZone={setFavCityTimeZone}
+      />
       <Analytics />
     </>
   );
