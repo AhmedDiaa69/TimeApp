@@ -52,7 +52,7 @@ export default function SearchBar({
         </div>
         {results.length > 0 && (
           <ul className="search-results list-none p-4 absolute w-full md:w-1/2 left-1/2 transform -translate-x-1/2 h-full overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
-            {results.map((city, i) => (
+            {results.slice(0, 20).map((city, i) => (
               <li
                 key={i}
                 className="search-result-item flex justify-between p-2 hover:bg-(--color-primary-hover) transition-all duration-300 rounded-lg"
