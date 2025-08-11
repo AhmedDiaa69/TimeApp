@@ -57,11 +57,11 @@ export default function SearchBar({
                 key={i}
                 className="search-result-item flex justify-between p-2 hover:bg-(--color-primary-hover) transition-all duration-300 rounded-lg"
                 onClick={() => {
-                  setCity(`${city.city}, ${city.country}`);
                   setSelectedCity(city);
+                  setCity("");
                 }}
               >
-                {city.city}, {city.country}{" "}
+                {city.city}, {city.province}, {city.country}{" "}
                 <span className=" text-(--color-text-h-muted)">
                   {city.timezone}
                 </span>
