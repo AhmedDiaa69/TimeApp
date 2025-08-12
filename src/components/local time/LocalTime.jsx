@@ -3,6 +3,7 @@ import Card from "../card/Card";
 
 export default function LocalTime() {
   const [localTime, setLocalTime] = useState("");
+  const [message, setMessage] = useState("");
 
   // Update local time every second
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function LocalTime() {
           { hour12: true }
         )
       );
+      setMessage(now.getHours() < 12 ? "Good morning!" : "Good evening!");
     };
 
     updateTime();
@@ -23,9 +25,11 @@ export default function LocalTime() {
     return () => clearInterval(interval);
   }, []);
 
+  
+
   return (
     <Card
-      title={"Local Time Information"}
+      title={message}
       time={localTime}
       date={new Date().toLocaleDateString("en-US", {
         weekday: "long",
