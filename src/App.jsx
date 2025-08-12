@@ -26,6 +26,18 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  function initTheme() {
+    const html = document.documentElement;
+    if (!html.hasAttribute("data-theme")) {
+      const prefTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      html.setAttribute("data-theme", prefTheme);
+    }
+  }
+
+  initTheme();
+
   const [favCityTime, setFavCityTime] = useState();
   const [favCityDate, setFavCityDate] = useState();
   const [favCityTimeZone, setFavCityTimeZone] = useState();

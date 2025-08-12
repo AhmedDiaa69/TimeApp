@@ -1,4 +1,12 @@
+import Button from "../button/Button";
+
 export default function Navbar() {
+  function toggleTheme() {
+    const html = document.documentElement;
+    const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+  }
+
   return (
     <>
       <nav
@@ -9,6 +17,9 @@ export default function Navbar() {
           <h1 className="text-2xl font-bold">
             Time<span className="text-(--color-primary)">App</span>
           </h1>
+        </div>
+        <div className="theme-toggle">
+          <Button onClick={toggleTheme}>Toggle Theme</Button>
         </div>
       </nav>
     </>
