@@ -26,10 +26,20 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      document.documentElement.setAttribute(
+        "data-theme",
+        e.matches ? "dark" : "light"
+      );
+    });
+
   function initTheme() {
     const html = document.documentElement;
     if (!html.hasAttribute("data-theme")) {
-      const prefTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      const prefTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
         ? "dark"
         : "light";
       html.setAttribute("data-theme", prefTheme);
