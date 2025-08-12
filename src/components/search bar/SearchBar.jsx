@@ -4,9 +4,9 @@ import DisplayTime from "../display time/DisplayTime.jsx";
 import Button from "../button/Button.jsx";
 
 export default function SearchBar({
-  setCityTime,
-  setCityDate,
-  setCityTimeZone,
+  setFavCityTime,
+  setFavCityDate,
+  setFavCityTimeZone,
 }) {
   const [city, setCity] = useState("");
   const results = cityTimezones.findFromCityStateProvince(city);
@@ -39,6 +39,12 @@ export default function SearchBar({
             placeholder="Search for a city..."
             className="search-input w-full md:w-1/2 bg-(--color-surface) border border-(--color-border) focus:outline-none focus:ring-2 focus:ring-(--color-primary) transition-all duration-300 rounded-lg p-2 shadow-sm"
             onChange={(e) => setCity(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                sendTimeZone();
+                setCity("");
+              }
+            }}
           />
           <Button
             onClick={() => {
@@ -51,7 +57,7 @@ export default function SearchBar({
           </Button>
         </div>
         {results.length > 0 && (
-          <ul className="search-results list-none p-4 absolute w-full md:w-1/2 left-1/2 transform -translate-x-1/2 h-full overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
+          <ul className="search-results list-none p-4 absolute w-full md:w-1/2 left-1/2 transform -translate-x-1/2 overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
             {results.slice(0, 20).map((city, i) => (
               <li
                 key={i}
@@ -73,9 +79,9 @@ export default function SearchBar({
       {selectedCity && (
         <DisplayTime
           cityData={selectedCity}
-          setFavCityTime={setCityTime}
-          setFavCityDate={setCityDate}
-          setFavCityTimeZone={setCityTimeZone}
+          setFavCityTime={setFavCityTime}
+          setFavCityDate={setFavCityDate}
+          setFavCityTimeZone={setFavCityTimeZone}
         />
       )}
     </>

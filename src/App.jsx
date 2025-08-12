@@ -36,15 +36,15 @@ function App() {
       <div className="hero flex flex-col md:flex-row w-full gap-8 p-4">
         <LocalTime />
         <FavTime
-          cityTime={favCityTime}
-          cityDate={favCityDate}
-          cityTimeZone={favCityTimeZone}
+          favCityTime={favCityTime}
+          favCityDate={favCityDate}
+          favCityTimeZone={favCityTimeZone}
         />
       </div>
       <SearchBar
-        setCityTime={setFavCityTime}
-        setCityDate={setFavCityDate}
-        setCityTimeZone={setFavCityTimeZone}
+        setFavCityTime={setFavCityTime}
+        setFavCityDate={setFavCityDate}
+        setFavCityTimeZone={setFavCityTimeZone}
       />
       <Analytics />
     </>
