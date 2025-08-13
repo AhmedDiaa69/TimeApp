@@ -26,6 +26,8 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  const [isDark, setIsDark] = useState(false);
+
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (e) => {
@@ -42,6 +44,7 @@ function App() {
         .matches
         ? "dark"
         : "light";
+      setIsDark(prefTheme === "dark");
       html.setAttribute("data-theme", prefTheme);
     }
   }
@@ -54,7 +57,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar isDark={isDark} setIsDark={setIsDark} />
       <div className="hero flex flex-col md:flex-row w-full gap-8 p-4">
         <LocalTime />
         <FavTime

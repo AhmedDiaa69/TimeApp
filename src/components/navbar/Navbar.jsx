@@ -1,9 +1,11 @@
-import Button from "../button/Button";
+import "@theme-toggles/react/css/InnerMoon.css"
+import { InnerMoon } from "@theme-toggles/react"
 
-export default function Navbar() {
+export default function Navbar({ isDark, setIsDark }) {
   function toggleTheme() {
     const html = document.documentElement;
     const newTheme = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    setIsDark(newTheme === "dark");
     html.setAttribute("data-theme", newTheme);
   }
 
@@ -18,9 +20,7 @@ export default function Navbar() {
             Time<span className="text-(--color-primary)">App</span>
           </h1>
         </div>
-        <div className="theme-toggle">
-          <Button onClick={toggleTheme}>Toggle Theme</Button>
-        </div>
+        <InnerMoon duration={300} className="text-3xl" onToggle={toggleTheme} toggled={isDark} />
       </nav>
     </>
   );
