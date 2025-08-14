@@ -6,6 +6,7 @@ import Button from "../button/Button.jsx";
 export default function SearchBar({
   setFavCityTime,
   setFavCityDate,
+  setFavCityData,
   setFavCityTimeZone,
 }) {
   const [city, setCity] = useState("");
@@ -81,6 +82,7 @@ export default function SearchBar({
           cityData={selectedCity}
           setFavCityTime={setFavCityTime}
           setFavCityDate={setFavCityDate}
+          setFavCityData={setFavCityData}
           setFavCityTimeZone={setFavCityTimeZone}
         />
       )}

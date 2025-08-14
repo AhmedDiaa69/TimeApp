@@ -6,6 +6,7 @@ export default function DisplayTime({
   cityData,
   setFavCityTime,
   setFavCityDate,
+  setFavCityData,
   setFavCityTimeZone,
 }) {
   const [time, setTime] = useState("");
@@ -64,6 +65,7 @@ export default function DisplayTime({
             onClick={() => {
               setFavCityTime(time);
               setFavCityDate(date);
+              setFavCityData(cityData);
               setFavCityTimeZone(cityData.timezone);
             }}
           >
