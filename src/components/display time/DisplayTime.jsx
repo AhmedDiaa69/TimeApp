@@ -7,7 +7,6 @@ export default function DisplayTime({
   setFavCityTime,
   setFavCityDate,
   setFavCityData,
-  setFavCityTimeZone,
 }) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
@@ -66,7 +65,6 @@ export default function DisplayTime({
               setFavCityTime(time);
               setFavCityDate(date);
               setFavCityData(cityData);
-              setFavCityTimeZone(cityData.timezone);
             }}
           >
             Add to Favorites

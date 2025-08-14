@@ -7,7 +7,6 @@ export default function SearchBar({
   setFavCityTime,
   setFavCityDate,
   setFavCityData,
-  setFavCityTimeZone,
 }) {
   const [city, setCity] = useState("");
   const results = cityTimezones.findFromCityStateProvince(city);
@@ -83,7 +82,6 @@ export default function SearchBar({
           setFavCityTime={setFavCityTime}
           setFavCityDate={setFavCityDate}
           setFavCityData={setFavCityData}
-          setFavCityTimeZone={setFavCityTimeZone}
         />
       )}
     </>
