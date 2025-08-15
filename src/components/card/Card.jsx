@@ -1,12 +1,36 @@
 import Button from "../button/Button";
 
-export default function Card({ title, time, date, timeZone, className }) {
+export default function Card({
+  title,
+  time,
+  date,
+  timeZone,
+  className,
+  onClickLeft,
+  onClickRight,
+  displayNav,
+}) {
   return (
     <div
       className={`flex flex-col items-center justify-center w-full md:w-1/2 ${className}`}
     >
-      <h1 id="title" className="text-2xl font-bold mb-4 text-center">
-        {title}
+      <h1
+        id="title"
+        className={`text-2xl font-bold mb-4 w-full flex ${
+          !displayNav ? "justify-center" : "justify-between"
+        }`}
+      >
+        <p>{title}</p>
+        {className.includes("fav-time-card") && (
+          <p className={!displayNav ? "hidden" : "block"}>
+            <span onClick={onClickLeft} className="cursor-pointer">
+              {"<"}
+            </span>{" "}
+            <span onClick={onClickRight} className="cursor-pointer">
+              {">"}
+            </span>
+          </p>
+        )}
       </h1>
       <div
         className={`p-4 rounded-lg flex flex-row items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg ${

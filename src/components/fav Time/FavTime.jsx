@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function FavTime({ favCityTime, favCityDate, favCityData }) {
   const [favCities, setFavCities] = useState([]);
+  const [CIndex, setCIndex] = useState(0);
 
   useEffect(() => {
     if (!favCityData) return;
@@ -27,15 +28,18 @@ export default function FavTime({ favCityTime, favCityDate, favCityData }) {
     <Card
       title={
         favCities.length > 0
-          ? `Favorite City: ${favCities[favCities.length - 1].data.city}, ${
-              favCities[favCities.length - 1].data.country
-            }`
+          ? `Favorite City: ${favCities[CIndex].data.city}, ${favCities[CIndex].data.country}`
           : "Your Favorite Time"
       }
       className="fav-time-card"
-      time={favCities[favCities.length - 1]?.time}
-      date={favCities[favCities.length - 1]?.date}
-      timeZone={favCities[favCities.length - 1]?.data?.timezone}
+      time={favCities[CIndex]?.time}
+      date={favCities[CIndex]?.date}
+      timeZone={favCities[CIndex]?.data?.timezone}
+      onClickRight={() =>
+        setCIndex((prev) => (prev < favCities.length - 1 ? prev + 1 : prev))
+      }
+      onClickLeft={() => setCIndex((prev) => (prev > 0 ? prev - 1 : prev))}
+      displayNav={favCities.length > 1}
     />
   );
 }
