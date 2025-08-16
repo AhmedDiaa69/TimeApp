@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Button from "../button/Button";
 
 export default function Card({
@@ -5,11 +6,15 @@ export default function Card({
   time,
   date,
   timeZone,
+  weather,
   className,
   onClickLeft,
   onClickRight,
   displayNav,
 }) {
+  useEffect(() => {
+    console.log(weather);
+  }, [weather]);
   return (
     <div
       className={`flex flex-col items-center justify-center w-full md:w-1/2 ${className}`}
