@@ -54,6 +54,7 @@ function App() {
   const [favCityTime, setFavCityTime] = useState();
   const [favCityDate, setFavCityDate] = useState();
   const [favCityData, setFavCityData] = useState();
+  const [favCityWeather, setFavCityWeather] = useState();
 
   return (
     <>
@@ -64,12 +65,14 @@ function App() {
           favCityTime={favCityTime}
           favCityDate={favCityDate}
           favCityData={favCityData}
+          favCityWeather={favCityWeather}
         />
       </div>
       <SearchBar
         setFavCityTime={setFavCityTime}
         setFavCityDate={setFavCityDate}
         setFavCityData={setFavCityData}
+        setFavCityWeather={setFavCityWeather}
       />
       <Analytics />
     </>

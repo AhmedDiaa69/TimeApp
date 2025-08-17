@@ -1,7 +1,7 @@
 import Card from "../card/Card";
 import { useState, useEffect } from "react";
 
-export default function FavTime({ favCityTime, favCityDate, favCityData }) {
+export default function FavTime({ favCityTime, favCityDate, favCityData, favCityWeather }) {
   const [favCities, setFavCities] = useState([]);
   const [CIndex, setCIndex] = useState(0);
 
@@ -17,12 +17,12 @@ export default function FavTime({ favCityTime, favCityDate, favCityData }) {
     if (!duplicates) {
       setFavCities((prev) => [
         ...prev,
-        { time: favCityTime, date: favCityDate, data: favCityData },
+        { time: favCityTime, date: favCityDate, data: favCityData, weather: favCityWeather },
       ]);
     } else {
       console.log("City already exists in favorites or no data provided.");
     }
-  }, [favCityData, favCityDate, favCityTime]);
+  }, [favCityData, favCityDate, favCityTime, favCityWeather]);
 
   return (
     <Card
@@ -35,6 +35,7 @@ export default function FavTime({ favCityTime, favCityDate, favCityData }) {
       time={favCities[CIndex]?.time}
       date={favCities[CIndex]?.date}
       timeZone={favCities[CIndex]?.data?.timezone}
+      weather={favCities[CIndex]?.weather}
       onClickRight={() =>
         setCIndex((prev) => (prev < favCities.length - 1 ? prev + 1 : prev))
       }

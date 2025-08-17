@@ -7,6 +7,7 @@ export default function DisplayTime({
   setFavCityTime,
   setFavCityDate,
   setFavCityData,
+  setFavCityWeather,
 }) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
@@ -99,6 +100,7 @@ export default function DisplayTime({
               setFavCityTime(time);
               setFavCityDate(date);
               setFavCityData(cityData);
+              setFavCityWeather(weather)
             }}
           >
             Add to Favorites

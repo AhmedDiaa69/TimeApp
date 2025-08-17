@@ -17,7 +17,7 @@ export default function Navbar({ isDark, setIsDark }) {
       >
         <div className="navbar__logo">
           <h1 className="text-2xl font-bold">
-            Time<span className="text-(--color-primary)">App</span>
+            Time<span className="text-(--color-primary)">/</span>Weather<span className="text-(--color-primary)">App</span>
           </h1>
         </div>
         <InnerMoon duration={300} className="text-3xl" onToggle={toggleTheme} toggled={isDark} />

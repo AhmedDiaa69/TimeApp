@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Button from "../button/Button";
 import Weather from "../weather/Weather";
 
@@ -13,9 +12,22 @@ export default function Card({
   onClickRight,
   displayNav,
 }) {
-  useEffect(() => {
-    console.log(weather);
-  }, [weather]);
+  // fallback if there is no weather passed
+  if (!weather) {
+    weather = {
+      humidity: "",
+      temp: "",
+      temp_min: "",
+      temp_max: "",
+      wind_speed: "",
+      visibility: "",
+      feels_like: "",
+      description: "",
+      pressure: "",
+      icon: "03n",
+    };
+  }
+
   return (
     <div
       className={`flex flex-col items-center justify-center w-full md:w-1/2 ${className}`}
@@ -51,7 +63,7 @@ export default function Card({
         <div className="text-sm text-(--color-text-muted) mt-1 text-right">
           {date ? date : "00-00-00"}, {timeZone ? timeZone : "UTC"}
         </div>
-      {weather && <Weather weather={weather}/>}
+        {weather && <Weather weather={weather} />}
       </div>
     </div>
   );
