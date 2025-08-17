@@ -29,7 +29,7 @@ export default function Weather({ weather }) {
   ];
 
   return (
-    <section id="weather_report" className="w-full flex flex-col items-center flex-wrap">
+    <section id="weather_report" className="w-full flex flex-col items-center">
       <figure className="">
         <img
           src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
@@ -40,7 +40,7 @@ export default function Weather({ weather }) {
       <span className="text-2xl font-bold text-(--color-primary)">
         {Math.round(weather.temp)}°C
       </span>
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-8 flex-wrap">
       {
         extra.map((ext) =>(
           <Extra title={ext.title} img={ext.img} value={ext.value} />
