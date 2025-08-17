@@ -15,6 +15,7 @@ export default function DisplayTime({
     temp: "",
     temp_min: "",
     temp_max: "",
+    wind_speed: "",
     feels_like: "",
     description: "",
     pressure: "",
@@ -57,7 +58,7 @@ export default function DisplayTime({
         });
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityData.city}&appid=dcd306ba4c8502fc4d164db188fdcca3&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${cityData.lat}&lon=${cityData.lng}&appid=dcd306ba4c8502fc4d164db188fdcca3&units=metric`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -68,6 +69,8 @@ export default function DisplayTime({
             temp: data["main"]["temp"],
             temp_min: data["main"]["temp_min"],
             temp_max: data["main"]["temp_max"],
+            wind_speed: data.wind.speed,
+            visibility: data.visibility,
             feels_like: data["main"]["feels_like"],
             description: data["weather"][0].description,
             pressure: data["main"]["pressure"],

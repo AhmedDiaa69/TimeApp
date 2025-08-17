@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Button from "../button/Button";
+import Weather from "../weather/Weather";
 
 export default function Card({
   title,
@@ -38,7 +39,7 @@ export default function Card({
         )}
       </h1>
       <div
-        className={`p-4 rounded-lg flex flex-row items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg ${
+        className={`p-4 rounded-lg flex flex-col items-center justify-between w-full min-h-24 bg-(--color-surface) shadow-lg ${
           time || date || timeZone
             ? ""
             : "border-dashed border-4 border-(--color-border)"
@@ -50,6 +51,7 @@ export default function Card({
         <div className="text-sm text-(--color-text-muted) mt-1 text-right">
           {date ? date : "00-00-00"}, {timeZone ? timeZone : "UTC"}
         </div>
+      {weather && <Weather weather={weather}/>}
       </div>
     </div>
   );
