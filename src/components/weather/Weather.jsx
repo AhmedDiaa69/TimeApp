@@ -40,7 +40,7 @@ export default function Weather({ weather }) {
       <span className="text-2xl font-bold text-(--color-primary)">
         {Math.round(weather.temp)}°C
       </span>
-      <div className="flex flex-row gap-8 flex-wrap">
+      <div className="flex flex-row gap-8 flex-wrap justify-center items-center">
       {
         extra.map((ext) =>(
           <Extra title={ext.title} img={ext.img} value={ext.value} />

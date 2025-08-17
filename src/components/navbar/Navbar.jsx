@@ -12,7 +12,7 @@ export default function Navbar({ isDark, setIsDark }) {
   return (
     <>
       <nav
-        className="navbar flex justify-between items-center bg-(--color-surface) sticky top-0 p-4 shadow-(--shadow-lg)"
+        className="navbar flex justify-between items-center bg-(--color-surface) sticky top-0 p-4 shadow-(--shadow-lg) z-50"
         data-aos="fade-down"
       >
         <div className="navbar__logo">
