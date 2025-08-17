@@ -29,7 +29,7 @@ export default function Weather({ weather }) {
   ];
 
   return (
-    <section id="weather_report" className="w-full flex flex-col items-center">
+    <section id="weather_report" className="w-full flex flex-col items-center flex-wrap">
       <figure className="">
         <img
           src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
