@@ -58,7 +58,7 @@ export default function SearchBar({
           </Button>
         </div>
         {results.length > 0 && (
-          <ul className="search-results list-none p-4 m-4 absolute w-full md:w-1/2 left-1/2 transform -translate-x-1/2 overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
+          <ul className="search-results list-none p-4 absolute w-[90%] md:w-1/2 left-1/2 transform -translate-x-1/2 overflow-y-auto z-50 max-h-28 top-full bg-(--color-surface) border border-(--color-border) shadow-lg rounded-lg">
             {results.slice(0, 20).map((city, i) => (
               <li
                 key={i}
