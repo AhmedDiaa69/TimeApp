@@ -15,15 +15,15 @@ export default function Card({
   // fallback if there is no weather passed
   if (!weather) {
     weather = {
-      humidity: "",
-      temp: "",
-      temp_min: "",
-      temp_max: "",
-      wind_speed: "",
-      visibility: "",
-      feels_like: "",
-      description: "",
-      pressure: "",
+      humidity: 0,
+      temp: 0,
+      temp_min: 0,
+      temp_max: 0,
+      wind_speed: 0,
+      visibility: 0,
+      feels_like: 0,
+      description: 0,
+      pressure: 0,
       icon: "03n",
     };
   }
