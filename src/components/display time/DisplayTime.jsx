@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Card from "../card/Card";
 import Button from "../button/Button";
+import { FavoriteCityContext } from "../../FavCityContext";
 
-export default function DisplayTime({
-  cityData,
-  setFavCityTime,
-  setFavCityDate,
-  setFavCityData,
-  setFavCityWeather,
-}) {
+export default function DisplayTime({ cityData }) {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [weather, setWeather] = useState({
@@ -22,6 +17,7 @@ export default function DisplayTime({
     pressure: "",
     icon: "",
   });
+  const { setFavCityTime, setFavCityDate, setFavCityData, setFavCityWeather } = useContext(FavoriteCityContext);
 
   const APIKey = "9ac18a62ee9b400aa10a235c2ea6e821";
 
@@ -36,12 +32,12 @@ export default function DisplayTime({
       )
         .then((response) => {
           if (!response.ok) {
-            throw new Error(`HTTP error! worldtime status: ${response.status}`);
+            throw new Error(`HTTP error! worldTime status: ${response.status}`);
           }
           return response.json();
         })
         .then((data) => {
-          console.log("worldtime data:", data);
+          console.log("worldTime data:", data);
           setTime(data.time_zone.time_12);
           setDate(
             new Date(data.time_zone.date_time).toLocaleDateString("en-US", {
@@ -100,7 +96,7 @@ export default function DisplayTime({
               setFavCityTime(time);
               setFavCityDate(date);
               setFavCityData(cityData);
-              setFavCityWeather(weather)
+              setFavCityWeather(weather);
             }}
           >
             Add to Favorites

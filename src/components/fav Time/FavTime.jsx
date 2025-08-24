@@ -1,9 +1,11 @@
 import Card from "../card/Card";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { FavoriteCityContext } from "../../FavCityContext";
 
-export default function FavTime({ favCityTime, favCityDate, favCityData, favCityWeather }) {
+export default function FavTime() {
   const [favCities, setFavCities] = useState([]);
   const [CIndex, setCIndex] = useState(0);
+  const { favCityTime, favCityDate, favCityData, favCityWeather } = useContext(FavoriteCityContext);
 
   useEffect(() => {
     if (!favCityData) return;

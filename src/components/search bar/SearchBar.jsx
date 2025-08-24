@@ -3,12 +3,7 @@ import cityTimezones from "city-timezones";
 import DisplayTime from "../display time/DisplayTime.jsx";
 import Button from "../button/Button.jsx";
 
-export default function SearchBar({
-  setFavCityTime,
-  setFavCityDate,
-  setFavCityData,
-  setFavCityWeather,
-}) {
+export default function SearchBar() {
   const [city, setCity] = useState("");
   const results = cityTimezones.findFromCityStateProvince(city);
   let [selectedCity, setSelectedCity] = useState("");
@@ -77,15 +72,7 @@ export default function SearchBar({
           </ul>
         )}
       </div>
-      {selectedCity && (
-        <DisplayTime
-          cityData={selectedCity}
-          setFavCityTime={setFavCityTime}
-          setFavCityDate={setFavCityDate}
-          setFavCityData={setFavCityData}
-          setFavCityWeather={setFavCityWeather}
-        />
-      )}
+      {selectedCity && <DisplayTime cityData={selectedCity} />}
     </>
   );
 }

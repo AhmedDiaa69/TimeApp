@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import LocalTime from "./components/local time/LocalTime";
 import FavTime from "./components/fav Time/FavTime";
 import SearchBar from "./components/search bar/SearchBar";
+import { FavoriteCityProvider } from "./FavCityContext";
 import { Analytics } from "@vercel/analytics/react";
 
 import AOS from "aos";
@@ -51,31 +52,16 @@ function App() {
 
   initTheme();
 
-  const [favCityTime, setFavCityTime] = useState();
-  const [favCityDate, setFavCityDate] = useState();
-  const [favCityData, setFavCityData] = useState();
-  const [favCityWeather, setFavCityWeather] = useState();
-
   return (
-    <>
+    <FavoriteCityProvider>
       <Navbar isDark={isDark} setIsDark={setIsDark} />
       <div className="hero flex flex-col md:flex-row w-full gap-8 p-4">
         <LocalTime />
-        <FavTime
-          favCityTime={favCityTime}
-          favCityDate={favCityDate}
-          favCityData={favCityData}
-          favCityWeather={favCityWeather}
-        />
+        <FavTime />
       </div>
-      <SearchBar
-        setFavCityTime={setFavCityTime}
-        setFavCityDate={setFavCityDate}
-        setFavCityData={setFavCityData}
-        setFavCityWeather={setFavCityWeather}
-      />
+      <SearchBar />
       <Analytics />
-    </>
+    </FavoriteCityProvider>
   );
 }
 
